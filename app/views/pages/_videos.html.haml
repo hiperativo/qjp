@@ -1,0 +1,18 @@
+.row
+	.span12
+		%h2 
+			Vídeos da Semana
+			%small= @main_video.titulo
+
+.row
+	.main-video-outer.span8
+		- youtube_video @main_video.url
+
+	.outros-videos.span4
+		%h4 Outros vídeos
+		%ul.videos.thumbnails
+			- for video in @videos do
+				%li.span2.video
+					= link_to "#", :class => "thumbnail", "data-youtube-url" => video.url do
+						= youtube_thumb video.url
+						= video.titulo

@@ -1,0 +1,21 @@
+- for coluna in @colunas do
+	.coluna
+		- unless coluna.artigos.empty?
+			.row
+				.span12
+					%h2
+						= coluna.name
+						%small atualizada #{coluna.created_at.strftime "%d de %B de %Y"}
+
+			- @artigo = coluna.artigos.first
+			.row
+				= image_tag "http://placehold.it/320x160", :class => "span4 imagem-da-coluna"
+				
+				.span6.ultimo-post
+					%h5.chapeu= @artigo.assunto
+					%h4.chamada= @artigo.chamada
+
+					:markdown
+						#{@artigo.resumo} **(por Fulano de Tal)**
+					
+					= link_to "Ler tudo", "#{coluna.name}/#{@artigo.chamada.parameterize}", :class => "btn"

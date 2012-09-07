@@ -1,0 +1,27 @@
+!!!
+%html
+%head
+	%title Queijunto & Preso
+	%link(href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css')
+	%meta(name="google-site-verification" content="hPvttbRv2su49kqIXz7fFYRIkqjdrIU26Wq9Sgbf8l4")
+	= stylesheet_link_tag "bootstrap", "stylesheet"
+	= csrf_meta_tag
+
+%body
+	.container.topo
+		.row
+			.span2.offset1= link_to image_tag("logo.png"), "/"
+			.span6.logo
+				:markdown
+					__Queijunto__&__Preso__
+
+	.container.conteudo{:class => @leitura ||= ""}
+		= yield
+
+	.rodape
+		.container
+			.row
+				.span12
+					:markdown
+						### __Queijunto__&__Preso__
+						Revolução no entretenimento *nerd* (rs)

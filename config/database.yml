@@ -1,0 +1,9 @@
+development:
+  adapter: postgresql
+  database: qjp
+  host: localhost
+
+production:
+  adapter: postgresql
+  database: qjp
+  host: localhost

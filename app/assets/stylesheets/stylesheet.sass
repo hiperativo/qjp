@@ -1,0 +1,150 @@
+$tipo_titulo: "Bree Serif"
+
+$branco: #DDD
+$preto: #111
+$cinza_escuro: #2d2e2d
+
+$roxo: #4d3861
+$roxo_escuro: #2b1a3c
+$roxo_claro: #cda2c8
+
+$queijo: #ffc63e
+$queijo_escuro: #b2781d
+$queijo_mais_escuro: #563b12
+
+.logo
+	:color $roxo
+	:text-shadow 1px 1px $cinza_escuro, 2px 2px $cinza_escuro, 3px 3px $cinza_escuro, 5px 5px 5px $preto
+
+	strong
+		:color $branco
+
+h1, h2, h3, h4, h5
+	:font-weight normal
+	:color $queijo
+
+h1, h2, h3, h4, .logo
+	:font-family $tipo_titulo
+	// :text-shadow 1px 1px 0px rgba(100%, 100%, 100%, 0.2)
+	:cursor default
+
+h1, h2, h3
+	:color $roxo_escuro
+
+h1	
+	:font-size 40px
+	:padding 20px 0px
+
+h2
+	:color $queijo
+	:text-shadow 1px 1px $queijo_escuro, 2px 2px $queijo_escuro, 3px 3px $queijo_mais_escuro, 4px 4px $queijo_mais_escuro, 5px 5px 5px $preto
+
+	small
+		:color $branco
+		:font-size 14px
+		:text-shadow none
+
+h4.chamada
+	:margin-top 0
+
+h5
+	:text-transform uppercase
+	:font-size 11px
+	:margin 0
+	:font-weight bold
+
+	&.chapeu
+		:margin-top -6px
+		:color $roxo_escuro
+
+body
+	:color $branco
+	// :padding-top 20px
+	// :font-size 14px
+	// :line-height 1.5
+	:background $roxo_escuro url("bg.gif")
+
+.topo
+	:padding 20px
+
+.conteudo
+	:background-color $roxo
+	:padding 20px 40px
+	:border-radius 10px
+	:background $roxo url("/images/bg-inner.gif")
+	:box-shadow 0px 0px 14px #104
+	:border solid 1px #6151a2
+	:box-shadow 1px 1px $roxo_escuro, 2px 2px $roxo_escuro, 3px 3px $roxo_escuro, 5px 5px 5px $preto
+	:min-height 400px
+
+	&.leitura
+		:color $preto
+		:background-image url("bg-inner-leitura.gif")
+
+.logo
+	:margin-top 40px
+	:font-size 60px
+
+.row
+	:padding 5px 0px
+
+.logo
+	// :border-bottom 1px solid $roxo_escuro
+	:padding 40px 0px
+
+.resumo
+	:font-size 16px
+
+.video .thumbnail
+	:border none
+	:box-shadow none
+	:color $branco
+	:background-color #000
+
+	&:hover
+		:border none
+		:box-shadow none
+
+.main-video-outer
+	:background-color $preto
+
+.main-video
+	:margin 10px
+
+.ultimo-post
+	:position relative
+	:height 160px
+
+.imagem-da-coluna
+	:width 320px
+	:height 160px
+
+.outros-videos.span4
+	:margin-left 0
+	:padding 0 10px
+	:background-color $preto
+	:height 375px
+
+.rodape
+	:opacity 0.8
+	:padding 40px 0
+	:margin-top 40px
+	:background-color $preto
+	:color $branco
+	:border-top 1px solid $roxo_escuro
+
+	h3
+		:color $queijo
+
+.btn
+	background-image: none
+	background-color: $queijo
+	color: $roxo
+	text-shadow: none
+	font-weight: bold
+	font-family: $tipo_titulo
+	text-transform: uppercase
+
+	&:hover
+		background-color: $roxo
+		color: $queijo

@@ -1,0 +1,8 @@
+- unless @videos.blank? and @colunas.blank?
+	= render "videos"
+	= render "ultimos_posts"
+- else
+	.row
+		:markdown
+			## Não há nada aqui ainda :(.
+			Mas terá muito em breve. Cheque novamente daqui uns dias.
