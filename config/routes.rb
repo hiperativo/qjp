@@ -1,4 +1,6 @@
 Qjp::Application.routes.draw do
-  match "/:coluna/:artigo" => "artigos#show"
-  root :to => "pages#index"
+	ActiveAdmin.routes(self)
+	devise_for :admin_users, ActiveAdmin::Devise.config
+	match "/:coluna/:artigo" => "artigos#show"
+	root :to => "pages#index"
 end
