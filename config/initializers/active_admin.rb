@@ -5,7 +5,7 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Qjp"
+  config.site_title = "Queijunto e Preso"
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
@@ -126,4 +126,12 @@ ActiveAdmin.setup do |config|
   #
   # To load a javascript file:
   #   config.register_javascript 'my_javascript.js'
+  ActiveAdmin::ResourceController.class_eval do
+    protected
+
+    def current_ability
+      @current_ability ||= AdminAbility.new(current_admin_user)
+    end
+
+  end
 end
