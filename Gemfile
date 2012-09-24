@@ -8,6 +8,8 @@ gem 'json'
 gem 'bluecloth'
 gem 'activeadmin'
 gem 'cancan'
+gem 'fog'
+gem 'rmagick'
 gem 'carrierwave'
 
 group :test do

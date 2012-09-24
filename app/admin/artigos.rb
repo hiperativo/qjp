@@ -6,7 +6,7 @@ ActiveAdmin.register Artigo do
 		end
 	end
 
-	form do |f|
+	form html: {multipart: true} do |f|
 		f.inputs do
 			f.input :assunto
 			f.input :chamada
