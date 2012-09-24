@@ -1,9 +1,9 @@
 class Artigo < ActiveRecord::Base
   belongs_to :coluna
-
   before_save :criar_slug
 
-  def criar_slug
-  	self.slug = self.chamada.parameterize
-  end
+  attr_accessible :assunto, :chamada, :resumo, :conteudo, :coluna_id, :imagem
+	def criar_slug
+		self.slug = self.chamada.parameterize
+	end
 end

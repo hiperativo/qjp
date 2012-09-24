@@ -3,6 +3,11 @@ development:
   database: qjp
   host: localhost
 
+test:
+  adapter: postgresql
+  database: qjp_test
+  host: localhost
+
 production:
   adapter: postgresql
   database: qjp

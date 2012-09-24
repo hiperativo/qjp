@@ -1,6 +1,6 @@
 - unless @videos.blank? and @colunas.blank?
-	= render "videos"
-	= render "ultimos_posts"
+	= render "videos" unless @videos.blank?
+	= render "ultimos_posts" unless @colunas.blank?
 - else
 	.row
 		:markdown

@@ -2,12 +2,13 @@
 %html
 %head
 	%title Queijunto & Preso
-	%link(href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css')
+	- unless Rails.env.test?
+		%link(href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css')
 	%meta(name="google-site-verification" content="hPvttbRv2su49kqIXz7fFYRIkqjdrIU26Wq9Sgbf8l4")
 	= stylesheet_link_tag "bootstrap", "stylesheet"
 	= javascript_include_tag "application"
 	= csrf_meta_tag
-	= render "shared/google_analytics"
+	= render "shared/google_analytics" unless Rails.env.test?
 
 %body
 	= render "shared/facebook_sdk"
