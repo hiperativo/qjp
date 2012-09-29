@@ -12,7 +12,6 @@ gem 'fog'
 gem 'rmagick'
 gem 'carrierwave'
 gem 'rich'
-gem 'omniauth-twitter'
 
 group :test do
 	gem "rspec-rails"
