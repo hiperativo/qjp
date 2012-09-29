@@ -1,6 +1,9 @@
 Qjp::Application.routes.draw do
-	ActiveAdmin.routes(self)
-	devise_for :admin_users, ActiveAdmin::Devise.config
+  mount Rich::Engine => '/rich', :as => 'rich'
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+
+  devise_for :users
+
 	match "/:coluna/:artigo" => "artigos#show"
 	root :to => "pages#index"
 end
