@@ -1,5 +1,6 @@
 # encoding: utf-8
 class Artigo < ActiveRecord::Base
+	validates :chamada, 		presence: true
 	validates :coluna, 		presence: true
 	validates :assunto, 	presence: true
 	validates :imagem, 		presence: true
@@ -43,6 +44,7 @@ class Artigo < ActiveRecord::Base
 
 		edit do
 			field :coluna
+			field :chamada
 			field :assunto
 			field :imagem
 			field :resumo
