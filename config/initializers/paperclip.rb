@@ -6,7 +6,7 @@ Paperclip::Attachment.default_options.update({
 	fog_credentials: {
 		provider: 							'Google',
 		google_storage_access_key_id: 		ENV['CLOUD_ID'], #example: GOOGNSFE234C4f
-		google_storage_secret_access_key: 	ENV['CLOUD_PASS'], #example: AERG4234D43DFg4234DVDF5423sDCSDC
+		google_storage_secret_access_key: 	ENV['CLOUD_SECRET'], #example: AERG4234D43DFg4234DVDF5423sDCSDC
 	},
 
 	fog_public: 	true, #this must be set to true or ALL assets will be private by DEFAULT
