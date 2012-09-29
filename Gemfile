@@ -6,11 +6,13 @@ gem 'thin'
 gem 'haml'
 gem 'json'
 gem 'bluecloth'
-gem 'activeadmin'
+gem 'rails_admin'
 gem 'cancan'
 gem 'fog'
 gem 'rmagick'
 gem 'carrierwave'
+gem 'rich'
+gem 'omniauth-twitter'
 
 group :test do
 	gem "rspec-rails"
@@ -29,3 +31,5 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
+gem "devise"
