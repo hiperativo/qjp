@@ -1,0 +1,15 @@
+.row
+	= image_tag @artigo.try(:imagem_url, :big)
+
+.row
+	.span12
+		h1=# @artigo.chamada
+
+	.span6.resumo
+		markdown:
+			#{@artigo.resumo} **(por Fulano de Tal)**
+
+.row
+	.span6.offset3
+		erb:
+			= @artigo.conteudo.html_safe

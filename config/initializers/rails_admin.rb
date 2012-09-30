@@ -2,7 +2,7 @@
 # See github.com/sferik/rails_admin for more informations
 
 RailsAdmin.config do |config|
-  config.main_app_name = ['Queijunto & Pedro', 'Admin']
+  config.main_app_name = ['Queijunto & Preso', 'Admin']
   config.current_user_method { current_user } 
 
   # config.authorize_with :cancan

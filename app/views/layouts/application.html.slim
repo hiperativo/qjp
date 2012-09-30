@@ -1,32 +1,33 @@
-!!!
-%html
-%head
-	%title Queijunto & Preso
-	- unless Rails.env.test?
-		%link(href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css')
-	%meta(name="google-site-verification" content="hPvttbRv2su49kqIXz7fFYRIkqjdrIU26Wq9Sgbf8l4")
+doctype html
+html
+head
+	title Queijunto & Preso
 	= stylesheet_link_tag "bootstrap", "stylesheet"
 	= javascript_include_tag "application"
 	= csrf_meta_tag
 	= render "shared/google_analytics" unless Rails.env.test?
 
-%body
-	= render "shared/facebook_sdk"
+body
 	.container.topo
 		.row
 			.span2.offset1= link_to image_tag("logo.png"), "/"
 			.span6.logo
-				:markdown
+				markdown:
 					__Queijunto__&__Preso__
 
-	.container.conteudo{:class => @leitura ||= ""}
+	.container.conteudo class=(@leitura ||= "")
 		= yield
 
+	- unless @artigo.blank?
+		.container.profile
+			/ = @artigo.user.name
 	.rodape
 		.container
 			.row
 				.span4
-					:markdown
+					markdown:
 						### __Queijunto__&__Preso__
 						Revolução no entretenimento *nerd* (rs)
 				.offset4.span2.fb-like-box(data-href="http://www.facebook.com/queijuntoepreso" data-colorscheme="dark" data-show-faces="true" data-stream="false" data-header="false" data-border-color="#000000")
+	
+	= render "shared/facebook_sdk"

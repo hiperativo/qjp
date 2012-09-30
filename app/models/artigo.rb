@@ -9,17 +9,25 @@ class Artigo < ActiveRecord::Base
 	validates :conteudo, 	presence: true
 
 	belongs_to :coluna
+	belongs_to :user
 	before_save :criar_slug
 	mount_uploader :imagem, BannerDoPostUploader
 	attr_accessible :assunto, :chamada, :resumo, :conteudo, :coluna_id, :imagem, :imagem_cache
+	cattr_accessor :current_user
+	before_save :definir_autor
 
 	def criar_slug
 		self.slug = self.chamada.parameterize
 	end
 
+	def definir_autor
+		self.user_id = @current_user
+	end
+
 	rails_admin do
 		weight 0
 		configure :coluna, :belongs_to_association 
+		configure :user, :belongs_to_association 
 		configure :assunto, :string do
 			help "Uma palavra que defina o foco desse artigo. Ex: Num artigo sobre o lançamento de uma prequel de sandman, seria apenas 'Sandman'"
 		end

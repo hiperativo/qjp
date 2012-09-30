@@ -1,3 +1,5 @@
+@import "http://fonts.googleapis.com/css?family=Bree+Serif"
+
 $tipo_titulo: "Bree Serif"
 
 $branco: #DDD
@@ -12,8 +14,8 @@ $queijo: #ffc63e
 $queijo_escuro: #b2781d
 $queijo_mais_escuro: #563b12
 
-*
-	:-webkit-transition all 300ms
+// *
+// 	:-webkit-transition all 300ms
 
 .logo
 	:color $roxo
@@ -70,19 +72,29 @@ body
 .topo
 	:padding 20px
 
-.conteudo
-	:background-color $roxo
+.conteudo, .profile
 	:padding 20px 40px
 	:border-radius 10px
-	:background $roxo url("/images/bg-inner.gif")
-	:box-shadow 0px 0px 14px #104
+	:border-top-left-radius 0px
+	:border-top-right-radius 0px
+
+
+.conteudo
+	:background-color $roxo
 	:border solid 1px #6151a2
+	:background $roxo url("/images/bg-inner.gif")
 	:box-shadow 1px 1px $roxo_escuro, 2px 2px $roxo_escuro, 3px 3px $roxo_escuro, 5px 5px 5px $preto
 	:min-height 400px
 
 	&.leitura
 		:color $preto
 		:background-image url("bg-inner-leitura.gif")
+		:border-bottom-left-radius 0px
+		:border-bottom-right-radius 0px
+
+
+.profile
+	:background-color transparentize($cinza_escuro, 0.3)
 
 .logo
 	:margin-top 40px
