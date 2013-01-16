@@ -11,7 +11,7 @@ $ ->
 	$(".video a").click ->
 		new_url = $(this).attr "data-youtube-url"
 		$(".main-video").attr "src", "http://www.youtube.com/embed/#{new_url}"
-		$(".main-video-title").html $(this).text();
+		$(".main-video-title").html $(this).text()
 		false
 
 	$(".preview").fancybox
@@ -29,3 +29,10 @@ $ ->
 			overlay:
 				css:
 					'background': "rgba(77, 56, 97, 0)"
+
+	if FB?
+		FB.init { status: true, cookie: true, xfbml: true }
+
+	else
+		$.getScript "http://connect.facebook.net/en_US/all.js#xfbml=1", ->
+			FB.init { status: true, cookie: true, xfbml: true }

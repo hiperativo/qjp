@@ -7,6 +7,14 @@ head
 	= csrf_meta_tag
 	= render "shared/google_analytics" unless Rails.env.test?
 
+	meta property="og:title" 		content="#{@artigo.chamada}"
+	meta property="og:type" 		content="article"
+	meta property="og:url" 			content="#{request.protocol}#{request.host_with_port}#{request.fullpath}"
+	meta property="og:site_name" 	content="Queijunto e Preso"
+	meta property="og:image" 		content="#{@artigo.imagem}"
+	meta property="og:description" 	content="#{@artigo.resumo}"
+	meta property="fb:app_id" 		content="267159516719712"
+
 body
 	= render "shared/facebook_sdk"
 	header.topo

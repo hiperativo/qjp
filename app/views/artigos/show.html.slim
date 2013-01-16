@@ -1,6 +1,8 @@
 / .row
 / 	= image_tag @artigo.try(:imagem_url, :big)
 
+
+
 header
 	.row
 		.span2.tema
@@ -18,8 +20,10 @@ article
 	.row
 		.span8.offset2
 			= @artigo.conteudo.html_safe
+	/ .row
+	/ 	= image_tag @artigo.imagem, class: "img-rounded span4 offset2"
 
-footer
+footer style="margin-top: 40px"
 	.row
 		.span2.offset2
 			= link_to (gravatar @artigo.author.email, 500), class: "preview" do
