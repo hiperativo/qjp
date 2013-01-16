@@ -8,6 +8,7 @@ head
 	= render "shared/google_analytics" unless Rails.env.test?
 
 body
+	= render "shared/facebook_sdk"
 	.container.topo
 		.row
 			.span2.offset1= link_to image_tag("logo.png"), "/"
@@ -30,4 +31,3 @@ body
 						Revolução no entretenimento *nerd* (rs)
 				.offset4.span2.fb-like-box(data-href="http://www.facebook.com/queijuntoepreso" data-colorscheme="dark" data-show-faces="true" data-stream="false" data-header="false" data-border-color="#000000")
 	
-	= render "shared/facebook_sdk"

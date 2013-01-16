@@ -43,5 +43,5 @@ footer
 							= link_to "/#{@artigo.coluna.name.parameterize}/#{artigo.chamada.parameterize}" do
 								= artigo.chamada
 
-	/ .row
-	/ 	h3 Leia outros posts de #{@artigo.author.name}
+			h2 Comentários
+			.fb-comments data-href="#{request.protocol}#{request.host_with_port}#" data-width="620" data-num-posts="30"
