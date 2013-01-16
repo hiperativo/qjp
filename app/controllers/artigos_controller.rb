@@ -1,6 +1,7 @@
 class ArtigosController < ApplicationController
-  def show
-  	@leitura = "leitura"
-  	@artigo = Artigo.where(:slug => params[:artigo]).first
-  end
+	layout "leitura"
+	def show
+		@leitura = "leitura"
+		@artigo = Artigo.find_by_slug(params[:artigo])
+	end
 end

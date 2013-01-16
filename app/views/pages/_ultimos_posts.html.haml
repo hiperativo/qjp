@@ -6,21 +6,22 @@
 					%h2
 						= coluna.name
 						%small
-							- @dias_criado = (Time.now - coluna.created_at).divmod(60*60*24)[0]
+							- @ultimo_artigo = coluna.artigos.order("created_at DESC").first
+							- @dias_criado = (Time.now - @ultimo_artigo.created_at).divmod(60*60*24)[0]
 							- if @dias_criado > 0
-								atualizada #{l coluna.created_at, format: "%A"}, há #{@dias_criado} dias atrás.
+								= postado_quando? @ultimo_artigo, "atualizada"
 							- else 
 								atualizada hoje.
 
 			- @artigo = coluna.artigos.first
 			.row
-				= image_tag @artigo.imagem_url(:small), :class => "span4 imagem-da-coluna"
+				= image_tag @artigo.imagem_url(:small), :class => "span4 imagem-da-coluna img-rounded"
 				
 				.span6.ultimo-post
 					%h5.chapeu= @artigo.assunto
 					%h4.chamada= @artigo.chamada
 
 					:markdown
-						#{@artigo.resumo} **(por Fulano de Tal)**
+						#{@artigo.resumo}
 					
-					= link_to "Ler tudo", "#{coluna.name}/#{@artigo.chamada.parameterize}", :class => "btn"
+					= link_to "Ler tudo", "#{coluna.name.parameterize}/#{@artigo.chamada.parameterize}", :class => "btn"

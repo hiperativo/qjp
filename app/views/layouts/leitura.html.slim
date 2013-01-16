@@ -2,26 +2,30 @@ doctype html
 html
 head
 	title Queijunto & Preso
-	= stylesheet_link_tag "application"
+	= stylesheet_link_tag "application", "leitura"
 	= javascript_include_tag "application"
 	= csrf_meta_tag
 	= render "shared/google_analytics" unless Rails.env.test?
 
 body
-	.container.topo
-		.row
-			.span2.offset1= link_to image_tag("logo.png"), "/"
-			.span6.logo
-				markdown:
-					**Queijunto**&**Preso**
+	header.topo
+		.container
+			.row
+				.span1 = link_to image_tag("logo.png", width: "80"), "/"
+				.span6.logo style="font-size: 30px; padding: 0px; margin-top: 30px"
+					markdown:
+						**Queijunto**&**Preso**
 
-	.container.conteudo class=(@leitura ||= "")
+	section.container
+		/ ul.breadcrumb
+		/ 	li 
+		/ 		= link_to "Queijunto e Preso", "/"
+		/ 		span.divider
+				
+		/ 	li= link_to @artigo.coluna.name, "/"
 		= yield
 
-	- if params[:controller] == "artigos"
-		.container.profile
-			= @artigo.author.name
-	.rodape
+	footer.rodape
 		.container
 			.row
 				.span4

@@ -4,6 +4,7 @@ Qjp::Application.routes.draw do
 
   devise_for :users
 
+	match "/:coluna" => "coluna#show"
 	match "/:coluna/:artigo" => "artigos#show"
 	root :to => "pages#index"
 end

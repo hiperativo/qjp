@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120930200716) do
+ActiveRecord::Schema.define(:version => 20130114204524) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -62,7 +62,17 @@ ActiveRecord::Schema.define(:version => 20120930200716) do
     t.integer  "coluna_id"
     t.string   "slug"
     t.boolean  "publico"
-    t.integer  "user_id"
+    t.integer  "author_id"
+  end
+
+  create_table "authors", :force => true do |t|
+    t.string   "name"
+    t.date     "birthday"
+    t.string   "twitter"
+    t.text     "bio"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "email"
   end
 
   create_table "colunas", :force => true do |t|

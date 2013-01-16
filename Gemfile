@@ -1,27 +1,19 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.11'
 gem 'pg'
 gem 'thin'
 gem 'haml'
 gem 'json'
-gem 'bluecloth'
-gem 'rails_admin'
-gem 'cancan'
+gem 'rails_admin', git: "https://github.com/sferik/rails_admin.git"
 gem 'fog'
 gem 'rmagick'
 gem 'carrierwave'
 gem 'rich'
-
-group :test do
-	gem "rspec-rails"
-	gem 'rb-fsevent'
-	gem 'database_cleaner'
-	gem 'capybara'
-	gem 'launchy'
-	gem 'factory_girl_rails'
-	gem 'guard-rspec'
-end
+gem 'maruku'
+gem 'bourbon'
+gem 'font-awesome-sass-rails'
+gem 'turbolinks'
 
 group :assets do
 	gem 'slim-rails'
@@ -32,5 +24,4 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
 gem "devise"

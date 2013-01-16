@@ -1,15 +1,47 @@
-.row
-	= image_tag @artigo.try(:imagem_url, :big)
+/ .row
+/ 	= image_tag @artigo.try(:imagem_url, :big)
 
-.row
-	.span12
-		h1=# @artigo.chamada
+header
+	.row
+		.span2.tema
+			i class="#{@artigo.coluna.icone}" style="font-size: 100px"
+			-# = image_tag "cinema.png", style:"margin-top: -60px"
 
-	.span6.resumo
-		markdown:
-			#{@artigo.resumo} **(por Fulano de Tal)**
-
-.row
-	.span6.offset3
-		erb:
+		.span8
+			markdown:
+				##{@artigo.chamada}
+			p style="text-transform: uppercase; font-size: 11px"
+				= image_tag (gravatar @artigo.author.email, 30), class: "img-rounded", style: "margin-right: 5px"
+				| por #{@artigo.author.name} / #{postado_quando? @artigo}, #{a_que_horas? @artigo}
+				
+article
+	.row
+		.span8.offset2
 			= @artigo.conteudo.html_safe
+
+footer
+	.row
+		.span2.offset2
+			= link_to (gravatar @artigo.author.email, 500), class: "preview" do
+				= gravatar_image @artigo.author.email, 140
+		.span6
+			markdown:
+				#### #{@artigo.author.name}
+				#{@artigo.author.bio}
+			= link_to "//twitter.com/pedrozath", class: "btn btn-info" do
+				i.icon-twitter
+				|@pedrozath
+
+	.row
+		.span8.offset2
+			h2 Leia outros posts dessa coluna
+			- for artigo in @artigo.coluna.artigos do
+				ul.icons
+					li
+						h4.chamada
+							i class="#{@artigo.coluna.icone}"
+							= link_to "/#{@artigo.coluna.name.parameterize}/#{artigo.chamada.parameterize}" do
+								= artigo.chamada
+
+	/ .row
+	/ 	h3 Leia outros posts de #{@artigo.author.name}

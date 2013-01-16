@@ -1,0 +1,89 @@
+//= require jquery.fancybox
+@import "bourbon"
+@import "font-awesome"
+
+// @include font-face(CorporateE, '/CorporateE-Regular', normal, true)
+@font-face
+	font-family: CorporateE
+	src: url("/assets/CorporateE-Regular.otf")
+	font-weight: normal
+	font-style: normal
+
+
+$tipo_titulo: "Bree Serif"
+$tipo_corpo_leitura: "CorporateE"
+
+$branco: #DDD
+$preto: #111
+$cinza_escuro: #2d2e2d
+
+$roxo: #4d3861
+$roxo_escuro: #2b1a3c
+$roxo_claro: #cda2c8
+
+$queijo: #ffc63e
+$queijo_escuro: #b2781d
+$queijo_mais_escuro: #563b12
+
+
+body
+	:background-image url("/assets/bg-inner-leitura-amarelado.gif")
+	:color $preto
+
+a 
+	:color $roxo
+	:padding 0 5px
+	:border-radius 5px
+
+	&:hover
+		:background-color $roxo
+		:color $queijo
+		:text-decoration none
+
+
+article
+	:font normal normal normal 18px/1.6 $tipo_corpo_leitura
+	:text-shadow 1px 1px #fff
+
+.img-circle
+	:border solid 5px $roxo
+	&:hover
+		:border-color $queijo
+
+section
+	:padding 20px 0
+
+	header, article, footer 
+		:padding 5px 0
+
+	header
+		// :text-align center
+		.tema
+			:color $roxo
+
+	footer
+		:font-size 12px
+
+	h1
+		:margin 0
+		:margin-bottom 20px
+		:padding 0
+
+	h1, h2
+		:color $queijo
+		:text-shadow 1px 1px $queijo_escuro, 2px 2px $queijo_escuro, 3px 3px $queijo_mais_escuro, 3px 3px 5px transparentize($preto, 0.4)
+		
+	h3
+		:color $cinza_escuro
+		:padding-top 10px
+		:border-top 1px dashed $cinza_escuro
+
+	h4
+		:color $cinza_escuro
+		:margin-top 0px
+
+		i
+			:color $roxo
+
+.topo 
+	:background-image url("/assets/bg.gif")
