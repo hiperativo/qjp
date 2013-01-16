@@ -25,6 +25,7 @@ class Artigo < ActiveRecord::Base
 		weight 0
 		configure :coluna, :belongs_to_association 
 		configure :user, :belongs_to_association
+		configure :author, :belongs_to_association
 		
 		configure :assunto, :string do
 			help "Uma palavra que defina o foco desse artigo. Ex: Num artigo sobre o lançamento de uma prequel de sandman, seria apenas 'Sandman'"
