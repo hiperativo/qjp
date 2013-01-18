@@ -6,6 +6,7 @@ class ArtigosController < ApplicationController
 		@artigo = Artigo.find_by_slug params[:artigo]
 		@title = @artigo.assunto
 		@description = @artigo.resumo
+		@fb_comments_url = "/#{@artigo.coluna.slug}/#{@artigo.slug}"
 	end
 
 	def index
