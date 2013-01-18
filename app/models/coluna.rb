@@ -8,6 +8,10 @@ class Coluna < ActiveRecord::Base
 		self.slug = self.name.parameterize
 	end
 
+	def atualizar_numero_de_artigos
+		self.update_attributes numero_de_artigos: self.artigos.count
+	end
+
 	def artigo_mais_recente
 		artigos.order("created_at DESC").first
 	end
