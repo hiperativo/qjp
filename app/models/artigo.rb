@@ -13,12 +13,13 @@ class Artigo < ActiveRecord::Base
 
 	belongs_to :coluna
 	belongs_to :author
-	before_save :criar_slug
+	before_save :criar_slugs
 	
 	mount_uploader :imagem, BannerDoPostUploader
 
-	def criar_slug
+	def criar_slugs
 		self.slug = self.chamada.parameterize
+		self.assunto_slug = self.assunto.parameterize
 	end
 
 	rails_admin do

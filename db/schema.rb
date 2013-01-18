@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130114203825) do
+ActiveRecord::Schema.define(:version => 20130118121518) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20130114203825) do
     t.string   "slug"
     t.boolean  "publico"
     t.integer  "author_id"
+    t.string   "assunto_slug"
   end
 
   create_table "authors", :force => true do |t|
@@ -83,6 +84,7 @@ ActiveRecord::Schema.define(:version => 20130114203825) do
     t.datetime "updated_at"
     t.string   "nome"
     t.string   "name"
+    t.string   "slug"
   end
 
   create_table "rails_admin_histories", :force => true do |t|

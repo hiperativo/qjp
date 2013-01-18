@@ -1,26 +1,28 @@
 doctype html
 html
 	head
-		title Queijunto & Preso
+		title Queijunto & Preso — #{@title}
+
+		meta name="description" content="#{@description}"
+
 		= stylesheet_link_tag "application"
-		= javascript_include_tag "application", "http://connect.facebook.net/en_US/all.js"
+		= stylesheet_link_tag "leitura"
+		= javascript_include_tag "application"
 
 		= csrf_meta_tag
-		= render "shared/google_analytics" unless Rails.env.test?
 
-		meta property="og:title" 		content="#{@artigo.chamada}"
+		meta property="og:title" 		content="#{@title}"
 		meta property="og:type" 		content="article"
 		meta property="og:url" 			content="http://www.queijuntoepreso.com.br#{request.fullpath}"
 		meta property="og:site_name" 	content="Queijunto e Preso"
-		meta property="og:image" 		content="#{@artigo.imagem}"
-		meta property="og:description" 	content="#{@artigo.resumo}"
+		meta property="og:image" 		content="#{@artigo.imagem unless @artigo.nil?}"
+		meta property="og:description" 	content="#{@description}"
 		meta property="fb:app_id" 		content="267159516719712"
-		script src="//connect.facebook.net/en_US/all.js"
+
+
+		= render "shared/google_analytics" unless Rails.env.test?
 
 	body
-		= stylesheet_link_tag "leitura"
-
-		/ #fb-root
 		header.topo
 			.container
 				.row
@@ -28,6 +30,10 @@ html
 					.span6.logo style="font-size: 30px; padding: 0px; margin-top: 30px"
 						markdown:
 							**Queijunto**&**Preso**
+		- unless @visualizando.nil?
+			.breadcrumb 
+				.container
+					h4 #{@visualizando}
 
 		section
 			= yield
@@ -35,8 +41,19 @@ html
 		footer.rodape
 			.container
 				.row
-					.span4
+					.span6
 						markdown:
 							### **Queijunto**&**Preso**
 							Revolução no entretenimento *nerd* (rs)
-					.offset4.span2.fb-like-box(data-href="http://www.facebook.com/queijuntoepreso" data-colorscheme="dark" data-show-faces="true" data-stream="false" data-header="false" data-border-color="#000000")
+
+						h4 Colunas
+						ul.icons
+							- for coluna in Coluna.all do
+								li
+									= link_to "/#{coluna.slug}" do
+										h5
+											i class="#{coluna.icone}"
+											= coluna.name
+
+					.offset2.span2.fb-like-box(data-href="http://www.facebook.com/queijuntoepreso" data-colorscheme="dark" data-show-faces="true" data-stream="false" data-header="false" data-border-color="#000000")
+				

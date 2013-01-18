@@ -26,6 +26,23 @@ $queijo_escuro: #b2781d
 $queijo_mais_escuro: #563b12
 
 
+a
+	:color $roxo
+
+	i, &
+		&:hover
+			:text-decoration none
+			:color $queijo
+
+h1, h2
+	a
+		:color $queijo
+
+.breadcrumb
+	:background-color $roxo
+	:border-radius 0px
+	:box-shadow inset 0px 0px 10px $preto
+
 body
 	:background-image url("/assets/bg-inner-leitura-amarelado.gif")
 	:color $preto
@@ -59,7 +76,8 @@ i
 		:margin-top -10px
 
 section
-	:padding 20px 0
+	:padding-top 10px
+	:padding-bottom 0
 
 	header, article, footer 
 		:padding 5px 0
@@ -77,19 +95,25 @@ section
 			i
 				:font-size 100px
 
+		h5
+			:color $roxo
+			:padding-top 10px
+		p
+			text-transform: uppercase
+			font-size: 11px
+
 	footer
 		:font-size 12px
 		a 
 			:color $roxo
 
-	h1
+	h1, h2
+		:font-size 40px
+		:color $queijo
+		:text-shadow 1px 1px $queijo_escuro, 2px 2px $queijo_escuro, 3px 3px $queijo_mais_escuro, 3px 3px 5px transparentize($preto, 0.4)
 		:margin 0
 		:margin-bottom 20px
 		:padding 0
-
-	h1, h2
-		:color $queijo
-		:text-shadow 1px 1px $queijo_escuro, 2px 2px $queijo_escuro, 3px 3px $queijo_mais_escuro, 3px 3px 5px transparentize($preto, 0.4)
 		
 	h3
 		:color $cinza_escuro

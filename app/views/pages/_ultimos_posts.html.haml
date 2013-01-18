@@ -24,4 +24,4 @@
 					:markdown
 						#{@artigo.resumo}
 					
-					= link_to "Ler tudo", "#{coluna.name.parameterize}/#{@artigo.chamada.parameterize}", :class => "btn"
+					= link_to "Ler", "#{coluna.slug}/#{@artigo.slug}", :class => "btn"

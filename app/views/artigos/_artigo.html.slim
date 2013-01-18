@@ -1,0 +1,18 @@
+section.artigo
+	header
+		.row
+			.span2.tema
+				= link_to "/#{artigo.coluna.name.parameterize}" do
+					i class="#{artigo.coluna.icone}"
+
+			.span10
+				h5 #{link_to artigo.coluna.name, "/#{artigo.coluna.slug}" } / #{link_to artigo.assunto, "/assunto/#{artigo.assunto_slug}"}
+				h2= link_to artigo.chamada, "/#{artigo.coluna.slug}/#{artigo.slug}"
+				p
+					= image_tag (gravatar artigo.author.email, 30), class: "img-rounded", style: "margin-right: 5px"
+					| por #{artigo.author.name} / #{postado_quando? artigo}, #{a_que_horas? artigo}
+					
+	article
+		.row
+			.span8.offset2
+				= artigo.conteudo.html_safe
