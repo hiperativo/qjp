@@ -32,7 +32,7 @@ footer style="margin-top: 40px"
 			markdown:
 				#### #{@artigo.author.name}
 				#{@artigo.author.bio}
-			= link_to "//twitter.com/pedrozath", class: "btn btn-info" do
+			= link_to "//twitter.com/#{@artigo.author.twitter}", class: "btn btn-info" do
 				i.icon-twitter
 				|@pedrozath
 
