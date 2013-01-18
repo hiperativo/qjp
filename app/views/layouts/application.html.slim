@@ -1,33 +1,32 @@
 doctype html
 html
-head
-	title Queijunto & Preso
-	= stylesheet_link_tag "application"
-	= javascript_include_tag "application"
-	= csrf_meta_tag
-	= render "shared/google_analytics" unless Rails.env.test?
+	head
+		title Queijunto & Preso
+		= stylesheet_link_tag "application"
+		= javascript_include_tag "application", "http://connect.facebook.net/en_US/all.js"
+		= csrf_meta_tag
+		= render "shared/google_analytics" unless Rails.env.test?
 
-body
-	= render "shared/facebook_sdk"
-	.container.topo
-		.row
-			.span2.offset1= link_to image_tag("logo.png"), "/"
-			.span6.logo
-				markdown:
-					**Queijunto**&**Preso**
-
-	.container.conteudo class=(@leitura ||= "")
-		= yield
-
-	- if params[:controller] == "artigos"
-		.container.profile
-			= @artigo.author.name
-	.rodape
-		.container
+	body
+		/ #fb-root
+		.container.topo
 			.row
-				.span4
+				.span2.offset1= link_to image_tag("logo.png"), "/"
+				.span6.logo
 					markdown:
-						### **Queijunto**&**Preso**
-						Revolução no entretenimento *nerd* (rs)
-				.offset4.span2.fb-like-box(data-href="http://www.facebook.com/queijuntoepreso" data-colorscheme="dark" data-show-faces="true" data-stream="false" data-header="false" data-border-color="#000000")
-	
+						**Queijunto**&**Preso**
+
+		.container.conteudo class=(@leitura ||= "")
+			= yield
+
+		- if params[:controller] == "artigos"
+			.container.profile
+				= @artigo.author.name
+		.rodape
+			.container
+				.row
+					.span4
+						markdown:
+							### **Queijunto**&**Preso**
+							Revolução no entretenimento *nerd* (rs)
+					.offset4.span2.fb-like-box(data-href="http://www.facebook.com/queijuntoepreso" data-colorscheme="dark" data-show-faces="true" data-stream="false" data-header="false" data-border-color="#000000")

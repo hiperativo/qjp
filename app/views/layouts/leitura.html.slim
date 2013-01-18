@@ -1,39 +1,42 @@
 doctype html
 html
-head
-	title Queijunto & Preso
-	= stylesheet_link_tag "application", "leitura"
-	= javascript_include_tag "application"
-	= csrf_meta_tag
-	= render "shared/google_analytics" unless Rails.env.test?
+	head
+		title Queijunto & Preso
+		= stylesheet_link_tag "application"
+		= javascript_include_tag "application", "http://connect.facebook.net/en_US/all.js"
 
-	meta property="og:title" 		content="#{@artigo.chamada}"
-	meta property="og:type" 		content="article"
-	meta property="og:url" 			content="#{request.protocol}#{request.host_with_port}#{request.fullpath}"
-	meta property="og:site_name" 	content="Queijunto e Preso"
-	meta property="og:image" 		content="#{@artigo.imagem}"
-	meta property="og:description" 	content="#{@artigo.resumo}"
-	meta property="fb:app_id" 		content="267159516719712"
+		= csrf_meta_tag
+		= render "shared/google_analytics" unless Rails.env.test?
 
-body
-	= render "shared/facebook_sdk"
-	header.topo
-		.container
-			.row
-				.span1 = link_to image_tag("logo.png", width: "80"), "/"
-				.span6.logo style="font-size: 30px; padding: 0px; margin-top: 30px"
-					markdown:
-						**Queijunto**&**Preso**
+		meta property="og:title" 		content="#{@artigo.chamada}"
+		meta property="og:type" 		content="article"
+		meta property="og:url" 			content="http://www.queijuntoepreso.com.br#{request.fullpath}"
+		meta property="og:site_name" 	content="Queijunto e Preso"
+		meta property="og:image" 		content="#{@artigo.imagem}"
+		meta property="og:description" 	content="#{@artigo.resumo}"
+		meta property="fb:app_id" 		content="267159516719712"
+		script src="//connect.facebook.net/en_US/all.js"
 
-	section
-		= yield
+	body
+		= stylesheet_link_tag "leitura"
 
-	footer.rodape
-		.container
-			.row
-				.span4
-					markdown:
-						### **Queijunto**&**Preso**
-						Revolução no entretenimento *nerd* (rs)
-				.offset4.span2.fb-like-box(data-href="http://www.facebook.com/queijuntoepreso" data-colorscheme="dark" data-show-faces="true" data-stream="false" data-header="false" data-border-color="#000000")
-	
+		/ #fb-root
+		header.topo
+			.container
+				.row
+					.span1 = link_to image_tag("logo.png", width: "80"), "/"
+					.span6.logo style="font-size: 30px; padding: 0px; margin-top: 30px"
+						markdown:
+							**Queijunto**&**Preso**
+
+		section
+			= yield
+
+		footer.rodape
+			.container
+				.row
+					.span4
+						markdown:
+							### **Queijunto**&**Preso**
+							Revolução no entretenimento *nerd* (rs)
+					.offset4.span2.fb-like-box(data-href="http://www.facebook.com/queijuntoepreso" data-colorscheme="dark" data-show-faces="true" data-stream="false" data-header="false" data-border-color="#000000")
