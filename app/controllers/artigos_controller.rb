@@ -5,6 +5,7 @@ class ArtigosController < ApplicationController
 		@artigos = Artigo.where slug: params[:artigo]
 		@artigo = Artigo.find_by_slug params[:artigo]
 		@title = @artigo.assunto
+		@og_title = @artigo.chamada
 		@description = @artigo.resumo
 		@fb_comments_url = "/#{@artigo.coluna.slug}/#{@artigo.slug}"
 	end
@@ -31,5 +32,6 @@ class ArtigosController < ApplicationController
 			@description = "Revolução no entretenimento nerd"
 
 		end
+		@og_title = @title
 	end
 end
