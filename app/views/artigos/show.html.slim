@@ -34,7 +34,7 @@ footer style="margin-top: 40px"
 				#{@artigo.author.bio}
 			= link_to "//twitter.com/#{@artigo.author.twitter}", class: "btn btn-info" do
 				i.icon-twitter
-				|@pedrozath
+				| @#{@artigo.author.twitter}
 
 	.row
 		.span8.offset2
