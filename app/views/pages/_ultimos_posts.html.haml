@@ -13,7 +13,7 @@
 							- else 
 								atualizada hoje.
 
-			- @artigo = coluna.artigos.first
+			- @artigo = coluna.artigos.order("created_at DESC").first
 			.row
 				= image_tag @artigo.imagem_url(:small), :class => "span4 imagem-da-coluna img-rounded"
 				

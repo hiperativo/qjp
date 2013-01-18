@@ -30,15 +30,19 @@ body
 	:background-image url("/assets/bg-inner-leitura-amarelado.gif")
 	:color $preto
 
-a 
-	:border-radius 5px
+li, p, article
+	a 
+		&:hover
+			:background-color $roxo
+			:color $queijo
+			:text-decoration none
+
+blockquote
+	:border-left 5px $queijo solid
+	:width 470px
 	
-
-	&:hover
-		:background-color $roxo
-		:color $queijo
-		:text-decoration none
-
+	p
+		:font italic normal normal 14px/1.7 Georgia
 
 article
 	:font normal normal normal 18px/1.6 $tipo_corpo_leitura
@@ -47,11 +51,12 @@ article
 	a
 		:color $preto
 		:text-decoration underline
+i
+	:color $roxo
 
-.img-circle
-	:border solid 5px $roxo
-	&:hover
-		:border-color $queijo
+.profile
+	h2
+		:margin-top -10px
 
 section
 	:padding 20px 0
@@ -59,15 +64,23 @@ section
 	header, article, footer 
 		:padding 5px 0
 
+	article
+		img
+			:border 5px solid #fff
+			:box-shadow 2px 2px 12px transparentize($roxo_escuro, 0.7)
+
+
 	header
 		// :text-align center
 		.tema
-			:color $roxo
+			:text-align right
+			i
+				:font-size 100px
 
 	footer
 		:font-size 12px
 		a 
-			:padding 0 5px
+			:color $roxo
 
 	h1
 		:margin 0
@@ -84,11 +97,13 @@ section
 		:border-top 1px dashed $cinza_escuro
 
 	h4
+		:font-size 14px
 		:color $cinza_escuro
 		:margin-top 0px
 
-		i
-			:color $roxo
+.comentarios
+	:margin-top 40px
+	:border-top 1px dashed $cinza_escuro
 
 .topo 
 	:background-image url("/assets/bg.gif")

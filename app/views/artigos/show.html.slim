@@ -1,51 +1,60 @@
-/ .row
-/ 	= image_tag @artigo.try(:imagem_url, :big)
+.container
+	header
+		.row
+			.span2.tema
+				i class="#{@artigo.coluna.icone}"
+				-# = image_tag "cinema.png", style:"margin-top: -60px"
 
+			.span10
+				markdown:
+					##{@artigo.chamada}
+				p style="text-transform: uppercase; font-size: 11px"
+					= image_tag (gravatar @artigo.author.email, 30), class: "img-rounded", style: "margin-right: 5px"
+					| por #{@artigo.author.name} / #{postado_quando? @artigo}, #{a_que_horas? @artigo}
+					
+	article
+		.row
+			.span8.offset2
+				= @artigo.conteudo.html_safe
 
+	footer style="margin-top: 40px"
+		.row
+			.span2.offset2
+				= link_to (gravatar @artigo.author.email, 500), class: "preview" do
+					= gravatar_image @artigo.author.email, 140
+			.span6.profile
+				markdown:
+					## #{@artigo.author.name}
+					#{@artigo.author.bio}
+				= link_to "//twitter.com/#{@artigo.author.twitter}", class: "btn btn-info" do
+					i.icon-twitter
+					| @#{@artigo.author.twitter}
 
-header
-	.row
-		.span2.tema
-			i class="#{@artigo.coluna.icone}" style="font-size: 100px"
-			-# = image_tag "cinema.png", style:"margin-top: -60px"
+		.row
+			.span4.offset2
+				h3 Ainda na coluna #{@artigo.coluna.name}
+				- for artigo in @artigo.coluna.artigos do
+					ul.icons
+						li
+							h4.chamada
+								i class="#{@artigo.coluna.icone}"
+								= link_to "/#{@artigo.coluna.name.parameterize}/#{artigo.chamada.parameterize}" do
+									= artigo.chamada
+			.span4
+				h3 Outros posts do(a) #{@artigo.author.name}
+				- for artigo in @artigo.author.artigos do
+					ul.icons
+						li
+							h4.chamada
+								i class="#{artigo.coluna.icone}"
+								= link_to "/#{artigo.coluna.name.parameterize}/#{artigo.chamada.parameterize}" do
+									= artigo.chamada
+									small
+										= artigo.coluna.name
 
-		.span8
-			markdown:
-				##{@artigo.chamada}
-			p style="text-transform: uppercase; font-size: 11px"
-				= image_tag (gravatar @artigo.author.email, 30), class: "img-rounded", style: "margin-right: 5px"
-				| por #{@artigo.author.name} / #{postado_quando? @artigo}, #{a_que_horas? @artigo}
-				
-article
-	.row
-		.span8.offset2
-			= @artigo.conteudo.html_safe
-	/ .row
-	/ 	= image_tag @artigo.imagem, class: "img-rounded span4 offset2"
-
-footer style="margin-top: 40px"
-	.row
-		.span2.offset2
-			= link_to (gravatar @artigo.author.email, 500), class: "preview" do
-				= gravatar_image @artigo.author.email, 140
-		.span6
-			markdown:
-				#### #{@artigo.author.name}
-				#{@artigo.author.bio}
-			= link_to "//twitter.com/#{@artigo.author.twitter}", class: "btn btn-info" do
-				i.icon-twitter
-				| @#{@artigo.author.twitter}
-
-	.row
-		.span8.offset2
-			h2 Leia outros posts dessa coluna
-			- for artigo in @artigo.coluna.artigos do
-				ul.icons
-					li
-						h4.chamada
-							i class="#{@artigo.coluna.icone}"
-							= link_to "/#{@artigo.coluna.name.parameterize}/#{artigo.chamada.parameterize}" do
-								= artigo.chamada
-
-			h2 Comentários
-			.fb-comments data-href="#{request.protocol}#{request.host_with_port}#{request.fullpath}" data-width="620" data-num-posts="30"
+.comentarios
+	.container
+		.row
+			.span8.offset2
+				h2 Comentários
+				.fb-comments data-href="#{request.protocol}#{request.host_with_port}#{request.fullpath}" data-width="620" data-num-posts="30"

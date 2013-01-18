@@ -25,13 +25,7 @@ body
 					markdown:
 						**Queijunto**&**Preso**
 
-	section.container
-		/ ul.breadcrumb
-		/ 	li 
-		/ 		= link_to "Queijunto e Preso", "/"
-		/ 		span.divider
-				
-		/ 	li= link_to @artigo.coluna.name, "/"
+	section
 		= yield
 
 	footer.rodape

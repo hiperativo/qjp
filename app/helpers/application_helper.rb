@@ -39,12 +39,12 @@ module ApplicationHelper
 	end
 
 	def a_que_horas?(artigo)
-		horas_24 = l artigo.created_at, format: '%k'
-		horas_12 = l artigo.created_at, format: '%l'
+		horas_24 = l(artigo.created_at, format: '%k').to_i
+		horas_12 = l(artigo.created_at, format: '%l').to_i
 
 		case horas_24.to_i
-		when 0 then output = "à <strong>meia-noite</strong>"
-		when 12 then output = "ao <strong>meio-dia</strong>"
+			when 0 then output = "à <strong>meia-noite</strong>"
+			when 12 then output = "ao <strong>meio-dia</strong>"
 		else
 			periodo = case horas_24
 				when 4..11 then "da manhã"
@@ -54,7 +54,7 @@ module ApplicationHelper
 				else ""
 			end
 
-			output = "às <strong>#{ horas_24 } #{periodo}</strong>"
+			output = "às <strong>#{ horas_12 } #{periodo}</strong>"
 
 		end
 		output.html_safe
