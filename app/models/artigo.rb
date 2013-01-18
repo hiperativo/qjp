@@ -14,6 +14,22 @@ class Artigo < ActiveRecord::Base
 	belongs_to :coluna
 	belongs_to :author
 	before_save :criar_slugs
+
+	after_create :aumentar_numero_de_artigos_nas_colunas
+	after_destroy :diminuir_numero_de_artigos_nas_colunas
+
+	def aumentar_numero_de_artigos_nas_colunas
+		atualizar_numero_de_artigos_nas_colunas 1
+	end
+
+	def diminuir_numero_de_artigos_nas_colunas
+		atualizar_numero_de_artigos_nas_colunas -1
+	end
+
+	def atualizar_numero_de_artigos_nas_colunas x
+		self.coluna.numero_de_artigos += x
+		self.coluna.save
+	end
 	
 	mount_uploader :imagem, BannerDoPostUploader
 

@@ -1,6 +1,6 @@
 class Coluna < ActiveRecord::Base
 	has_many :artigos
-	attr_accessible :tema, :resumo, :icone, :created_at, :updated_at, :name
+	attr_accessible :tema, :resumo, :icone, :created_at, :updated_at, :name, :numero_de_artigos
 
 	before_save :criar_slug
 
