@@ -8,6 +8,10 @@ class Coluna < ActiveRecord::Base
 		self.slug = self.name.parameterize
 	end
 
+	def artigo_mais_recente
+		artigos.order("created_at DESC").first
+	end
+
 	rails_admin do
 		configure :icone do
 			help "Procurar no projeto Font Awesome e escrever aqui. Ex: icon-facetime-video"

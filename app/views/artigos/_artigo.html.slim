@@ -10,7 +10,7 @@ section.artigo
 				h2= link_to artigo.chamada, "/#{artigo.coluna.slug}/#{artigo.slug}"
 				p
 					= image_tag (gravatar artigo.author.email, 30), class: "img-rounded", style: "margin-right: 5px"
-					| por #{artigo.author.name} / #{postado_quando? artigo}, #{a_que_horas? artigo}
+					| por #{artigo.author.name} / #{artigo.postado_quando?}, #{artigo.a_que_horas?}
 					
 	article
 		.row

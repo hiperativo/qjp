@@ -17,9 +17,48 @@ class Artigo < ActiveRecord::Base
 	
 	mount_uploader :imagem, BannerDoPostUploader
 
+	def novo?
+		created_at.strftime("%d/%m/%y") == Time.now.strftime("%d/%m/%y")
+	end
+
 	def criar_slugs
 		self.slug = self.chamada.parameterize
 		self.assunto_slug = self.assunto.parameterize
+	end
+
+	def postado_quando?(verbo="postado")
+		if self.criado_ha_quantos_dias? < 7
+			output = "#{verbo} <strong>#{ I18n.l self.created_at, format: '%A' }</strong>"
+		else 
+			output = "#{verbo} há <strong>#{ self.criado_ha_quantos_dias?}</strong> dias atrás"
+		end
+		output.html_safe
+	end
+
+	def criado_ha_quantos_dias?
+		(Time.now - self.created_at).divmod(60*60*24)[0]
+	end
+
+	def a_que_horas?
+		horas_24 = I18n.l(self.created_at, format: '%k').to_i
+		horas_12 = I18n.l(self.created_at, format: '%l').to_i
+
+		case horas_24.to_i
+			when 0 then output = "à <strong>meia-noite</strong>"
+			when 12 then output = "ao <strong>meio-dia</strong>"
+		else
+			periodo = case horas_24
+				when 4..11 then "da manhã"
+				when 13..18 then "da tarde"
+				when 19..23 then "da noite"
+				when 0..3 then "da madrugada, (insônia é foda)"
+				else ""
+			end
+
+			output = "às <strong>#{ horas_12 } #{periodo}</strong>"
+
+		end
+		output.html_safe
 	end
 
 	rails_admin do

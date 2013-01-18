@@ -1,0 +1,30 @@
+- for coluna in @colunas do
+	.coluna
+		- unless coluna.artigos.empty?
+			.row
+				.span12
+					h2
+						= coluna.name
+						small
+							- if coluna.artigo_mais_recente.novo?
+								| atualizada hoje.
+							- else
+								= coluna.artigo_mais_recente.postado_quando? "atualizada"
+
+			- @artigo = coluna.artigos.order("created_at DESC").first
+			
+			.row
+				.span4 style="position:relative"
+					- if coluna.artigo_mais_recente.novo?
+						.ribbon-wrapper
+							.ribbon Novo!
+					= image_tag @artigo.imagem_url(:small), :class => "imagem-da-coluna img-rounded"
+				
+				.span6.ultimo-post
+					h5.chapeu= @artigo.assunto
+					h4.chamada= @artigo.chamada
+
+					markdown:
+						#{@artigo.resumo}
+					
+					= link_to "Ler", "#{coluna.slug}/#{@artigo.slug}", :class => "btn"

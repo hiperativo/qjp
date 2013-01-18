@@ -164,3 +164,29 @@ body
 	&:hover
 		background-color: $roxo
 		color: $queijo
+
+.ribbon-wrapper
+	width: 85px
+	height: 88px
+	overflow: hidden
+	position: absolute
+	top: -2px
+	left: -2px
+	z-index: 9999
+
+	.ribbon 
+		right: 30px
+		top: 15px
+		color: $roxo
+		:text-transform uppercase
+		:font-size 11px
+		:font-weight bold
+		
+		:box-shadow inset 0px 0px 40px $queijo_escuro, 1px 1px 7px $roxo
+
+		text-align: center
+		@include transform(rotate(-45deg))
+		position: relative
+		padding: 5px 0
+		width: 120px
+		background-color: $queijo
