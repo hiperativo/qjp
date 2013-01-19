@@ -45,7 +45,7 @@ html
 						markdown:
 							### **Queijunto**&**Preso**
 							Revolução no entretenimento *nerd* (rs)
-
+						= link_to content_tag(:i, "", class: "icon-rss")+" Assine o nosso feed", "/blog.xml", class: "btn"
 						h4 Colunas
 						ul.icons
 							- for coluna in Coluna.all do

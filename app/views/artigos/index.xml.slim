@@ -1,0 +1,18 @@
+# encoding: utf-8
+<?xml version="1.0" encoding="UTF-8"?>
+rss version="2.0"
+	channel
+		title Queijunto e Preso
+		description Revolução no entretenimento nerd rs
+		link http://www.queijuntoepreso.com.br/
+		lastBuildDate= Artigo.order("created_at DESC").first.created_at
+		pubDate= Artigo.order("created_at DESC").first.created_at
+		ttl 60
+		
+		- for artigo in @artigos do 
+			item
+				title= artigo.chamada
+				description= artigo.resumo
+				link= "http://www.queijuntoepreso.com.br/#{artigo.coluna.slug}/#{artigo.slug}"
+				guid= "http://www.queijuntoepreso.com.br/#{artigo.coluna.slug}/#{artigo.slug}"
+				pubDate= artigo.created_at
